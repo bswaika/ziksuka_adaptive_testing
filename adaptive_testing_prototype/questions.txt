@@ -1,0 +1,20 @@
+1=>Which Indian-origin boy has been crowned as the UK’s ‘Child Genius’ in a popular television quiz competition?=>Rahul Doshi*=>Naveen Jain=>Preethi Singh=>Kalpana Chauhan=>A=>3
+2=>Which state government has launched an exclusive 24×7 helpline ‘181’ for women?=>Uttar Pradesh=>Telangana*=>Assam=>Jharkhand=>B=>4
+3=>Which city is hosting the 8th World Renewable Energy Technology Congress?=>Pune=>Guwahati=>New Delhi*=>Bhopal=>C=>1
+4=>MK Damodaran, who passed away recently, was the former Advocate General of which state?=>Odisha=>Uttar Pradesh=>Haryana=>Kerala*=>D=>5
+5=>Which state government will launch a new scheme for Compassionate Family Pension (CFP) in lieu of compassionate appointment?=>Assam*=>Manipur=>Arunachal Pradesh=>Jammu & Kashmir=>A=>2
+6=>Which Indian-origin boy has been crowned as the UK’s ‘Child Genius’ in a popular television quiz competition?=>Rahul Doshi*=>Naveen Jain=>Preethi Singh=>Kalpana Chauhan=>A=>9
+7=>Which state government has launched an exclusive 24×7 helpline ‘181’ for women?=>Uttar Pradesh=>Telangana*=>Assam=>Jharkhand=>B=>0
+8=>Which city is hosting the 8th World Renewable Energy Technology Congress?=>Pune=>Guwahati=>New Delhi*=>Bhopal=>C=>8
+9=>MK Damodaran, who passed away recently, was the former Advocate General of which state?=>Odisha=>Uttar Pradesh=>Haryana=>Kerala*=>D=>7
+10=>Which state government will launch a new scheme for Compassionate Family Pension (CFP) in lieu of compassionate appointment?=>Assam*=>Manipur=>Arunachal Pradesh=>Jammu & Kashmir=>A=>6
+11=>Which Indian-origin boy has been crowned as the UK’s ‘Child Genius’ in a popular television quiz competition?=>Rahul Doshi*=>Naveen Jain=>Preethi Singh=>Kalpana Chauhan=>A=>0.5
+12=>Which state government has launched an exclusive 24×7 helpline ‘181’ for women?=>Uttar Pradesh=>Telangana*=>Assam=>Jharkhand=>B=>1.5
+13=>Which city is hosting the 8th World Renewable Energy Technology Congress?=>Pune=>Guwahati=>New Delhi*=>Bhopal=>C=>2.5
+14=>MK Damodaran, who passed away recently, was the former Advocate General of which state?=>Odisha=>Uttar Pradesh=>Haryana=>Kerala*=>D=>3.5
+15=>Which state government will launch a new scheme for Compassionate Family Pension (CFP) in lieu of compassionate appointment?=>Assam*=>Manipur=>Arunachal Pradesh=>Jammu & Kashmir=>A=>4.5
+16=>Which Indian-origin boy has been crowned as the UK’s ‘Child Genius’ in a popular television quiz competition?=>Rahul Doshi*=>Naveen Jain=>Preethi Singh=>Kalpana Chauhan=>A=>5.5
+17=>Which state government has launched an exclusive 24×7 helpline ‘181’ for women?=>Uttar Pradesh=>Telangana*=>Assam=>Jharkhand=>B=>6.5
+18=>Which city is hosting the 8th World Renewable Energy Technology Congress?=>Pune=>Guwahati=>New Delhi*=>Bhopal=>C=>3
+19=>MK Damodaran, who passed away recently, was the former Advocate General of which state?=>Odisha=>Uttar Pradesh=>Haryana=>Kerala*=>D=>8.5
+20=>Which state government will launch a new scheme for Compassionate Family Pension (CFP) in lieu of compassionate appointment?=>Assam*=>Manipur=>Arunachal Pradesh=>Jammu & Kashmir=>A=>7.5

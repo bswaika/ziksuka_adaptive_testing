@@ -1,0 +1,192 @@
+{% load static %}
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+	<link href="{% static 'css/style1.css' %}" rel="stylesheet" />
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+</head>
+<body>
+	<div ng-app="myApp" class="container">
+		<div class="header">
+			<div class="row">
+				<div class="col-md-12" style="text-align:center">
+					<h3>Ziksuka Quiz Application</h3>
+				</div>
+			</div>
+			<hr />
+		</div>
+		<div ng-controller="myController">
+			<div ng-if="app_stage_userid">
+				<b>User Id : </b>
+				<input type="text" ng-model="userid_input"  />
+				<button ng-click="move_to_quiz()" class="btn btn-warning">Start Quiz</button>
+			</div>
+			<div ng-if="app_stage_quiz">
+				<!-- <p>Question {$ question_counter+1$}: <b>{$ ques_obj.question $}</b></p>
+
+				<input type="radio" ng-model = "answer" name = "answer" value="A" /> {$ ques_obj.choices[0] $} <br />
+				<input type="radio" ng-model = "answer" name = "answer" value="B" /> {$ ques_obj.choices[1] $} <br />
+				<input type="radio" ng-model = "answer" name = "answer" value="C" /> {$ ques_obj.choices[2] $}<br />
+				<input type="radio" ng-model = "answer" name = "answer" value="D" /> {$ ques_obj.choices[3] $} <br />
+
+				<button ng-click="submit_answer()">Next Question</button>
+				<button ng-click="end_quiz()">End Quiz</button>
+				<br>
+				<br> -->
+		
+
+				<div id="quiz">
+					<div class="label label-warning">Question {$ question_counter+1 $} of {$ total_questions $}.</div>
+					<div class="row">
+						<div class="col-md-12">
+							<h2>{$ question_counter+1 $}. {$ ques_obj.question $}</h2>
+						</div>
+					</div>
+					<div class="row text-left options">
+						<div class="col-md-6">
+							<div class="option">
+								<label class="" for="">
+									<input type="radio" ng-model = "answer" name = "answer" value="A" /> {$ ques_obj.choices[0] $}
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="option">
+								<label class="" for="">
+									<input type="radio" ng-model = "answer" name = "answer" value="B" /> {$ ques_obj.choices[1] $}
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="option">
+								<label class="" for="">
+									<input type="radio" ng-model = "answer" name = "answer" value="C" /> {$ ques_obj.choices[2] $}
+								</label>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<div class="option">
+								<label class="" for="">
+									<input type="radio" ng-model = "answer" name = "answer" value="D" /> {$ ques_obj.choices[3] $}
+								</label>
+							</div>
+						</div>
+					</div>
+				</div>
+				<hr />
+				<div class="quizNav">
+					<div>
+						<button class="btn btn-primary" ng-click="submit_answer()">Next</button>
+					</div>
+					<br />
+				</div>
+	
+   
+	
+			</div><!-- view ends -->
+
+			<div ng-if="app_stage_result">
+				<h5>Quiz Over. Thanks !</h5>
+				<h4> Your Score is : <b>{$ learning_ability *100 | number:2 $}%</b></h4>
+			</div>
+
+		</div>
+	</div>
+	<script>
+		//defined angular app 
+		var app = angular.module('myApp',[]);
+
+		// changing angular variable syntax from {{ to {%
+		app.config(function($interpolateProvider) {
+			$interpolateProvider.startSymbol('{$');
+			$interpolateProvider.endSymbol('$}');
+		});
+
+		app.controller('myController',function($scope,$http){
+
+			// initial view controller 
+			$scope.app_stage_userid = true;
+			$scope.app_stage_quiz = false;
+			$scope.app_stage_result = false;
+
+			$scope.userid = null;
+			$scope.userid_input = null;
+
+			$scope.last_response = -1;
+			$scope.ques_obj ={'id':"",'question':"","choices":"",'answer':""}
+			$scope.learning_ability = 0.0;
+			// No.of question to be asked in quiz
+			$scope.total_questions = 5;
+			$scope.question_counter = 0;
+
+			// it will move from id input to quiz
+			$scope.move_to_quiz = function(){
+				$scope.app_stage_userid = false;
+				$scope.app_stage_quiz = true;
+				//taking userid from html input will be replaced by server
+				$scope.userid = this.userid_input;
+				$scope.send_to_server(); // initial data send to server
+			}
+			// to convert choices data received as string into array
+			$scope.make_arr_from_str = function(string){
+				return string.replace( /\n/g, " " ).split(" ");
+			}
+
+			$scope.send_to_server = function(){
+				// we can use $param method over this json data
+				var data = {'user_id':$scope.userid,'last_response':$scope.last_response,'last_qid':$scope.ques_obj.id};
+				console.log("date send to server => ",data);
+				// url will be django url
+				var url = '/learning/question';
+				//post request to server
+				$http({
+					url: url,
+					method: 'POST',
+					data: data,
+				}).then(function successCallback(response){
+					console.log("data received from server",response.data);
+
+					$scope.ques_obj.question = response.data.question;
+					$scope.ques_obj.choices = $scope.make_arr_from_str(response.data.choices);
+					$scope.ques_obj.id = response.data.id
+					$scope.ques_obj.answer = response.data.answer
+					$scope.learning_ability = response.data.ability
+					console.log("question object",$scope.ques_obj);
+				}, function errorCallback(response) {
+					// called asynchronously if an error occurs
+					// or server returns response with an error status.
+					console.log("server returned error");
+				});//http ends
+			};
+
+			//accept & handle answer submitted from frot end view
+			$scope.submit_answer = function(){
+				$scope.answer = this.answer;
+				this.answer = false;
+				$scope.last_response = $scope.check_answer();
+
+				$scope.send_to_server();
+				$scope.question_counter += 1;
+				if($scope.question_counter == $scope.total_questions)
+					$scope.end_quiz();
+			}
+
+			// function to check answer
+			$scope.check_answer = function(){
+				console.log("user input is ",$scope.answer);
+				console.log("correct answer is ",$scope.ques_obj.answer);
+				if($scope.answer == $scope.ques_obj.answer)
+					return 1;
+				else
+					return 0;
+			}
+			// it will end the quiz
+			$scope.end_quiz = function(){
+				$scope.app_stage_quiz = false;
+				$scope.app_stage_result = true;
+				$scope.submit_answer();
+			}
+	
+		});//controller ends
+	</script>
+</body>
