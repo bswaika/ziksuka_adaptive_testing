@@ -7,7 +7,7 @@ This codebase includes a shareable version of the implementations of the Adaptiv
 
 `./adaptive_testing_API_pre_prod/` includes a minimalist barebones version of the core adaptive testing API implemented in **Django**.
 
-`./conf_paper_final.pdf` has the final version of the conference paper submitted at ICAIDM, 2018.
+`./conf_paper_final.pdf` has the final version of the conference paper titled *'Exploring the Applications of Neural Networks in Adaptive Learning Environments'* submitted at ICAIDM, 2018.
 
 
 ---
